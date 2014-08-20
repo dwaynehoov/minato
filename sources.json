@@ -1,0 +1,32 @@
+{
+"api.version": "v1",
+  "sources":[{
+    "name":"var_log_messages",
+    "category":"OS/Linux/System",
+    "automaticDateParsing":true,
+    "multilineProcessingEnabled":false,
+    "useAutolineMatching":false,
+    "forceTimeZone":false,
+    "timeZone":"America/New_York",
+    "filters":[],
+    "cutoffTimestamp":0,
+    "encoding":"UTF-8",
+    "pathExpression":"/var/log/messages",
+    "blacklist":[],
+    "sourceType":"LocalFile"
+  },{
+    "name":"var_log_secure",
+    "category":"OS/Linux/Security",
+    "automaticDateParsing":true,
+    "multilineProcessingEnabled":false,
+    "useAutolineMatching":false,
+    "forceTimeZone":false,
+    "timeZone":"America/New_York",
+    "filters":[],
+    "cutoffTimestamp":0,
+    "encoding":"UTF-8",
+    "pathExpression":"/var/log/secure",
+    "blacklist":[],
+    "sourceType":"LocalFile"
+  }]
+}
