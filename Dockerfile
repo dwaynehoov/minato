@@ -1,5 +1,5 @@
 # Sumo Logic docker
-# VERSION               0.1
+# VERSION               0.2
 
 FROM      ubuntu:latest
 MAINTAINER Dwayne Hoover <dwayne@sumologic.com>
@@ -7,6 +7,10 @@ MAINTAINER Dwayne Hoover <dwayne@sumologic.com>
 ADD https://collectors.sumologic.com/rest/download/deb/64 /tmp/collector.deb
 ADD sumo.conf /etc/sumo.conf
 # ADD sources.json /etc/sources.json
+
+# ensure that the collector gets started when you launch
+ADD start_sumo /etc/my_init.d/start_sumo
+RUN chmod 755 /etc/my_init.d/start_sumo
 
 # install deb
 RUN dpkg -i /tmp/collector.deb
@@ -24,8 +28,9 @@ EXPOSE 27017
 # Cleanup
 RUN rm -rf /tmp/*
 
-# CMD service collector start
-# CMD /usr/bin/mongod --fork --logpath /var/log/mongodb.log --noprealloc --smallfiles
-ADD go.sh /usr/local/bin/go.sh
-RUN chmod 755 /usr/local/bin/go.sh
-CMD /usr/local/bin/go.sh
+# Deprecated - can wrap multiple apps/service in one shell script if needed
+# ADD go.sh /usr/local/bin/go.sh
+# RUN chmod 755 /usr/local/bin/go.sh
+# CMD /usr/local/bin/go.sh
+
+ENTRYPOINT usr/bin/mongod
