@@ -1,5 +1,6 @@
 # Sumo Logic docker
 # VERSION               0.2
+# Adjusted to follow approach outlined here: http://paislee.io/how-to-add-sumologic-to-a-dockerized-app/
 
 FROM      ubuntu:latest
 MAINTAINER Dwayne Hoover <dwayne@sumologic.com>
